@@ -8,11 +8,10 @@ RunawayBikes has a goal: to be able to showcase important information regarding 
 
 ### The data set(s) we will be using are:
 
-- CitiBike stations
-- CitiBike trips
+- Citi Bike System Data
 
-Both are accessible using this link here (must click the sources called "citibike_stations" and "citibike_trips":
-https://www.kaggle.com/nycopendata/new-york
+It is accessible using this link here (must click the sources called "citibike_stations" and "citibike_trips":
+https://s3.amazonaws.com/tripdata/index.html
 
 ## Explanation of Plan
 We plan to have a map where CitiBike stations are plotted. This would be the default item that shows if there is no user interaction.
