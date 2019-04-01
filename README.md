@@ -27,3 +27,6 @@ The enter() and exit() selections will be utilized a lot in order to input the s
 The transform() will be very useful in moving the plotted markers to where they should be. If the map is indeed interactive and the user is able to click-and-drag, then transform will be heavily used.
 
 If we do have an interactive map, a zoomable map would be epic.
+
+## Vision
+![Our vision](https://raw.githubusercontent.com/th0mazzz/Runaway/master/doc/Vision.png)
