@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask import request, session #login function
+from flask import request #login function
 from flask import url_for, redirect, flash #redirect functions
 from util import map as m
 
@@ -12,7 +12,9 @@ with open('data/stations.json', 'r') as file:
     dict = json.load(file)
     listOfStations = dict["stationBeanList"]
 
-    
+    stationDictById = {}
+    for entry in listOfStations:
+        stationDictById[entry["id"]] = entry
 
 
 @app.route("/")
@@ -21,6 +23,7 @@ def root():
 
 @app.route("/<lat>/<long>")
 def map(lat,long):
+    stationId = request.args["id"] #returns id of station
     return render_template('home.html', link = m.displayMapC(lat,long), list = listOfStations)
 
 

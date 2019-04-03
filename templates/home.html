@@ -44,18 +44,24 @@
 
 </head>
 <body>
-  <h1>UwU</h1>
-
+  <h1>Runaway</h1>
+  
   <svg xmlns="http://www.w3.org/2000/svg" id="vimage" height="1080" width="1920" style="border: 1px solid;">
     <image xlink:href={{link}} height="1080" width="1920"/>
     <circle cx="960" cy="540" r="10" fill="steelblue"></circle>
+  </svg>
+
+  <text>There will be pie charts with num docks and num bikes</text>
+  <svg xmlns="http://www.w3.org/2000/svg" id="vimage" height="1080" width="600" style="border: 1px solid;">
+    <circle cx="200" cy="540" r="20" fill="steelblue"></circle>
+    
   </svg>
 
   <div class="dropdown">
     <button class="dropbtn">Dropdown</button>
     <div class="dropdown-content">
       {% for dict in list %}
-      <a href="/{{dict["latitude"]}}/{{dict["longitude"]}}">{{dict["stAddress1"]}}</a>
+      <a href="/{{dict["latitude"]}}/{{dict["longitude"]}}?id={{dict["id"]}}">{{dict["stAddress1"]}}</a>
       {% endfor %}
     </div>
   </div>
