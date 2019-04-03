@@ -2,14 +2,21 @@
 <head>
   <title>Runaway</title>
 </head>
+<style>
 
+</style>
 <body>
   <h1>UwU</h1>
 
   <svg xmlns="http://www.w3.org/2000/svg" id="vimage" height="1080" width="1920" style="border: 1px solid;">
     <image xlink:href={{link}} height="1080" width="1920"/>
-
+    <circle cx="960" cy="540" r="5" fill="steelblue"></circle>
   </svg>
+  <ul>
+    {% for dict in list %}
+    <li><a href="/{{dict["latitude"]}}/{{dict["longitude"]}}">{{dict["stAddress1"]}}</a></li>
+    {% endfor %}
+  </ul>
 </body>
 
 </html>
