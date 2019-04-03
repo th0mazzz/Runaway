@@ -12,6 +12,7 @@ with open('data/stations.json', 'r') as file:
     dict = json.load(file)
     listOfStations = dict["stationBeanList"]
 
+    
 
 
 @app.route("/")
