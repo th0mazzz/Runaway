@@ -1,3 +1,5 @@
+//---------------------------------------- Pie Chart ---------------------------------------
+
 var svg1 = document.getElementById("vimage");
 var stationId = svg1.getAttribute("station");
 
@@ -10,8 +12,8 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 	    console.log(data.stationBeanList[x]);
 	    var docks = data.stationBeanList[x].totalDocks;
 	    var availableDocks = data.stationBeanList[x].availableDocks;
-	    //var bikes = data.stationBeanList[x].availableBikes;
-	    var stationData = [{"name": "available", "number": availableDocks}, {"name": "occupied", "number": docks - availableDocks}];
+	    var bikes = data.stationBeanList[x].availableBikes;
+	    var stationData = [{"name": "open docks", "number": availableDocks}, {"name": "occupied docks", "number": docks - availableDocks - bikes}, {"name":"available bikes", "number":bikes}];
 	    console.log(stationData);
 	}
     }
@@ -22,7 +24,7 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 
     var color = d3.scaleOrdinal()
 	.domain(stationData)
-	.range(["#ff0000","#00cc00"]);
+	.range(["#ff0000","#0066ff","#00cc00"]);
 
     var pie = d3.pie()
 	.value(function(d) {
@@ -34,7 +36,7 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 
     var labelArc = d3.arc()
 	.outerRadius(radius)
-	.innerRadius(radius - 50);
+	.innerRadius(radius - 100);
 
     var svg = d3.select("#pie")
 	.append("svg")
@@ -43,21 +45,58 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 	.append("g")
 	.attr("transform", "translate(" + width/2 + "," + height/2 +")");
 
-    var g = svg.selectAll("arc")
+    var arcy = svg.selectAll("arc")
 	.data(pie)
 	.enter().append("g")
 	.attr("class", "arc");
 
-    g.append("path")
+    arcy.append("path")
 	.attr("d", arc)
 	.style("fill", function(d) {
 	    //console.log(d);
 	    return color(d.data.name);
 	});
 
-    g.append("text")
+    arcy.append("text")
 	.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-	.text(function(d) { return d.data.number + ' ' + d.data.name;})
+	.text(function(d) { return d.data.number;})
 	.style("fill", "#000");
+
+
+//---------------------------------------- Legend for Pie Chart ---------------------------------------
     
+    var pieLegend = d3.select(".pieLegend").append("svg")
+        .attr("width", width).attr("height", height)
+    
+    //D3 Vertical Legend//////////////////////////
+    var legendElements = pieLegend.selectAll('.pieLegend')
+        .data(stationData)
+        .enter().append('g')
+        .attr("class", "legends3")
+        .attr("transform", function (d, i) {
+            {
+                return "translate(0," + i * 20 + ")"
+            }
+        })
+    
+    legendElements.append('rect')
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 10)
+        .attr("height", 10)
+        .style("fill", function (d, i) {
+	    console.log(i)
+	    return color(i)
+        })
+    
+    legendElements.append('text')
+        .attr("x", 20)
+        .attr("y", 10)
+    //.attr("dy", ".35em")
+        .text(function (d, i) {
+            return d.name
+        })
+        .attr("class", "textselected")
+        .style("text-anchor", "start")
+        .style("font-size", 15)
 });

@@ -32,4 +32,4 @@ If we do have an interactive map, a zoomable map would be epic.
 ![Our vision](https://raw.githubusercontent.com/th0mazzz/Runaway/master/doc/Vision.png)
 
 ## LAUNCH CODES
-working on it
+Firstly, one must procure Flask. This can be done by opening the terminal
