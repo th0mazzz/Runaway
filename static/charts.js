@@ -24,7 +24,7 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 
     var color = d3.scaleOrdinal()
 	.domain(stationData)
-	.range(["#ff0000","#0066ff","#00cc00"]);
+	.range(["#0066ff","#00cc00","#ff0000"]);
 
     var pie = d3.pie()
 	.value(function(d) {
@@ -38,14 +38,14 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 	.outerRadius(radius)
 	.innerRadius(radius - 100);
 
-    var svg = d3.select("#pie")
+    var svgPie = d3.select("#pie")
 	.append("svg")
 	.attr("width", width)
 	.attr("height", height)
 	.append("g")
 	.attr("transform", "translate(" + width/2 + "," + height/2 +")");
 
-    var arcy = svg.selectAll("arc")
+    var arcy = svgPie.selectAll("arc")
 	.data(pie)
 	.enter().append("g")
 	.attr("class", "arc");
@@ -65,11 +65,11 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 
 //---------------------------------------- Legend for Pie Chart ---------------------------------------
     
-    var pieLegend = d3.select(".pieLegend").append("svg")
-        .attr("width", width).attr("height", height)
+    var pieLegend = d3.select("#pieLegend").append("svg")
+        .attr("width", 150).attr("height", 100)
     
     //D3 Vertical Legend//////////////////////////
-    var legendElements = pieLegend.selectAll('.pieLegend')
+    var legendElements = pieLegend.selectAll('#pieLegend')
         .data(stationData)
         .enter().append('g')
         .attr("class", "legends3")
