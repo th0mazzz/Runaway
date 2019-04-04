@@ -9,9 +9,7 @@
 	font-size: 16px;
 	border: none;
     }
-
     /* The container <div> - needed to position the dropdown content */
-    
 
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
@@ -21,7 +19,6 @@
 	min-width: 160px;
 	z-index: 1;
     }
-
     /* Links inside the dropdown */
     .dropdown-content a {
 	color: black;
@@ -29,31 +26,27 @@
 	text-decoration: none;
 	display: block;
     }
-
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {background-color: #ddd;}
-
     /* Show the dropdown menu on hover */
     .dropdown:hover .dropdown-content {display: block;}
-
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-    
   </style>
 
 </head>
 <body>
   <h1>Runaway</h1>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" id="vimage" height="700" width="700" style="border: 1px solid;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" id="vimage" station="{{stationid}}" height="700" width="700" style="border: 1px solid;">
     <image xlink:href={{link}} height="700" width="700"/>
     <circle cx="350" cy="350" r="8" fill="red"></circle>
   </svg>
 
   <svg xmlns="http://www.w3.org/2000/svg" id="vimage" height="700" width="600" style="border: 1px solid;">
     <circle cx="200" cy="540" r="20" fill="steelblue"></circle>
-    
+
   </svg>
 
   <div class="dropdown">
@@ -64,7 +57,10 @@
       {% endfor %}
     </div>
   </div>
-  
+  <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+
+  <script src="static/charts.js"></script>
 </body>
+
 
 </html>

@@ -24,7 +24,7 @@ def root():
 @app.route("/<lat>/<long>")
 def map(lat,long):
     stationId = request.args["id"] #returns id of station
-    return render_template('home.html', link = m.displayMapC(lat,long), list = listOfStations)
+    return render_template('home.html', link = m.displayMapC(lat,long), list = listOfStations, stationid = stationId)
 
 
 if __name__=="__main__":
