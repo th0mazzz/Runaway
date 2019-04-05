@@ -59,3 +59,14 @@ pip install wheel
 ```
 pip install flask
 ```
+
+-------------- YOU NEED TO MAKE THE API KEY READING THINGIE -----------------
+
+
+Awesome. To run the app, change into the directory of the application (where the file app.py is).
+Now, run the file using:
+```
+python app.py
+```
+
+And you're good to go!
