@@ -32,4 +32,30 @@ If we do have an interactive map, a zoomable map would be epic.
 ![Our vision](https://raw.githubusercontent.com/th0mazzz/Runaway/master/doc/Vision.png)
 
 ## LAUNCH CODES
-Firstly, one must procure Flask. This can be done by opening the terminal
+Firstly, one needs to install pip via the following:
+```
+sudo apt install python3-pip
+```
+
+After properly installing pip, one needs to be able to create virtual environments (this is done for safety).
+```
+pip install virtualenv
+```
+
+To create a virtual environment, simply do:
+```
+virtualenv <name you wish to give your virtualenv>
+```
+
+Great! You now have created a virtual environment. To activate it, do the following:
+```
+source <name of virtualenv>/bin/activate
+```
+
+Now you want to install wheel and flask through the following commands:
+```
+pip install wheel
+```
+```
+pip install flask
+```
