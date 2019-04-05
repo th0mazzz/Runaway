@@ -81,13 +81,11 @@ thomasZ -- 2019-04-04 02:42
 - Got the pie chart of available docks/occupied docks!
 - Remember to do LAUNCH CODES in the README
 ==============================================================
-firstL -- 2019-04-04 14:00
+peciR -- 2019-04-05 13:38
 --------------------------------------------------------------
-- Basic legend for pie chart
-==============================================================
-firstL -- 2019-04-00 00:00
---------------------------------------------------------------
-- What you do
+- Create stylesheet.css and move to static/ folder to organize home.html
+- Add logic to fix bugs
+
 ==============================================================
 firstL -- 2019-04-00 00:00
 --------------------------------------------------------------
