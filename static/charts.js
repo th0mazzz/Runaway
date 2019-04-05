@@ -14,7 +14,7 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 	    var availableDocks = data.stationBeanList[x].availableDocks;
 	    var bikes = data.stationBeanList[x].availableBikes;
 	    var stationData = [{"name": "open docks", "number": availableDocks}, {"name": "occupied docks", "number": docks - availableDocks - bikes}, {"name":"available bikes", "number":bikes}];
-	    console.log(stationData);
+	    //console.log(stationData);
 	}
     }
 
@@ -85,7 +85,7 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
         .attr("width", 10)
         .attr("height", 10)
         .style("fill", function (d, i) {
-	    console.log(i)
+	    //console.log(i)
 	    return color(i)
         })
     
@@ -99,4 +99,12 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
         .attr("class", "textselected")
         .style("text-anchor", "start")
         .style("font-size", 15)
+});
+
+
+//---------------------------------------- something  ---------------------------------------
+
+
+var bikecsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-citibike-tripdata.csv").then(function(data){
+    console.log(data)
 });
