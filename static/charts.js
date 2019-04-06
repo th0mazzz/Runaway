@@ -1,5 +1,5 @@
 //---------------------------------------- Pie Chart ---------------------------------------
-
+var bigdiv = document.getElementById("bigdiv");
 var svg1 = document.getElementById("vimage");
 var stationId = svg1.getAttribute("station");
 
@@ -18,9 +18,9 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 	}
     }
 
-    var width = 400;
-    var height = 400;
-    var radius = 150
+    var width = 380;
+    var height = 380;
+    var radius = 140
 
     var color = d3.scaleOrdinal()
 	.domain(stationData)
@@ -38,12 +38,9 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 	.outerRadius(radius)
 	.innerRadius(radius - 100);
 
-    var svgPie = d3.select("#pie")
-	.append("svg")
-	.attr("width", width)
-	.attr("height", height)
+    var svgPie = d3.select("#vimage")
 	.append("g")
-	.attr("transform", "translate(" + width/2 + "," + height/2 +")");
+	.attr("transform", "translate(" + 850 + "," + 200 +")");
 
     var arcy = svgPie.selectAll("arc")
 	.data(pie)

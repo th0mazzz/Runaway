@@ -9,19 +9,21 @@
 
   <h1>Runaway</h1>
 
-  <svg xmlns="http://www.w3.org/2000/svg" id="vimage" station="{{stationid}}" height="700" width="700" style="border: 1px solid;">
-    <image xlink:href={{link}} height="700" width="700"/>
-	{% if hasCoordinates %}
-    	<circle cx="350" cy="350" r="5" fill="red"></circle>
-	{% endif %}
-  </svg>
+  <div id="bigdiv" style="width:1920px;height:1080px">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" id="vimage" station="{{stationid}}" height="1000" width="1200" style="border: 1px solid;">
+      <image xlink:href={{link}} height="700" width="700"/>
+      {% if hasCoordinates %}
+      <circle cx="350" cy="350" r="5" fill="red"></circle>
+      {% endif %}
+    </svg>
 
-  <div id="pie" style="width:400px; height:400px"> </div>
-  
-  <div id="pieLegend">
-    <h3> Current Station Status </h3>
+    <!--
+    <div id="pieLegend">
+      <h3> Current Station Status </h3>
+    </div>-->
   </div>
-   
+
   <div class="dropdown">
     <button class="dropbtn">Dropdown</button>
     <div class="dropdown-content">
@@ -29,6 +31,7 @@
       <a href="/{{dict["latitude"]}}/{{dict["longitude"]}}?id={{dict["id"]}}">{{dict["stAddress1"]}}</a>
       {% endfor %}
     </div>
+
   </div>
 
 </body>
