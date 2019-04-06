@@ -81,15 +81,17 @@ thomasZ -- 2019-04-04 02:42
 - Got the pie chart of available docks/occupied docks!
 - Remember to do LAUNCH CODES in the README
 ==============================================================
-peciR -- 2019-04-05 13:38
+rubinP -- 2019-04-05 13:38
 --------------------------------------------------------------
 - Create stylesheet.css and move to static/ folder to organize home.html
 - Add logic to fix bugs
-
 ==============================================================
-firstL -- 2019-04-00 00:00
+thomasZ -- 2019-04-06 01:06
 --------------------------------------------------------------
-- What you do
+- Managed to be able to read the csv file
+- Got the pie graph of genders
+- Working on that pie graph's legend
+- Still need to complete launch codes
 ==============================================================
 firstL -- 2019-04-00 00:00
 --------------------------------------------------------------
