@@ -104,9 +104,9 @@ firstL -- 2019-04-06 16:25
 - Managed to fix the gender pie legend
 - Added the customer v subscriber pie chart and legend
 ==============================================================
-firstL -- 2019-04-00 00:00
+thomasZ -- 2019-04-06 19:24
 --------------------------------------------------------------
-- What you do
+- Made a cooler search function and put up a landing page
 ==============================================================
 firstL -- 2019-04-00 00:00
 --------------------------------------------------------------

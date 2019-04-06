@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Runaway</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../static/stylesheet.css">
+
+  <style>
+
+          /* Dropdown Content (Hidden by Default) */
+          #stations {
+              display: none;
+              position: absolute;
+              background-color: #f6f6f6;
+              min-width: 200px;
+              border: 1px solid #ddd;
+              z-index: 1;
+          }
+
+          /* Links inside the dropdown */
+          #stations a {
+              color: black;
+              padding: 12px 16px;
+              text-decoration: none;
+              display: block;
+          }
+
+          /* Change color of dropdown links on hover */
+          .dropdown-content a:hover {background-color: #f1f1f1}
+
+          /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+          .show {display:none;}
+  </style>
+
+</head>
+
+<body>
+
+  <h1 style="text-align:center">RunawayBikes</h1>
+
+
+  <div id="dropdown" style="text-align:center">
+      <input id="searchbar" type="text" style="text-align:center;height:75px;width:800px;font-size:30pt" placeholder="Search your CitiBike station..." onkeyup="filter()" oninput="toggler()">
+  </div>
+
+  <div style="text-align:center">
+      <div id="stations">
+          {% for dict in list %}
+          <a href="/{{dict["latitude"]}}/{{dict["longitude"]}}?id={{dict["id"]}}">{{dict["stAddress1"]}}</a>
+          {% endfor %}
+      </div>
+  </div>
+
+  <script src="../static/search.js"></script>
+
+</body>
+
+</html>

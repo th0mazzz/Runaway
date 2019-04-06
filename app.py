@@ -19,9 +19,10 @@ with open('data/stations.json', 'r') as file:
         stationDictById[entry["id"]] = entry
 
 #root directory
+
 @app.route("/")
-def root():
-    return render_template('home.html', link = m.displayMap(), list = listOfStations, hasCoordinates = False)
+def landing():
+    return render_template('landing.html', list = listOfStations)
 
 @app.route("/<lat>/<long>")
 def map(lat,long):
