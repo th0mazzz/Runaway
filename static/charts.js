@@ -56,8 +56,6 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
     .style("font-size", 20)
     .style("fill", "white")
 
-    //<text x="800" y="50" font-family="sans-serif" font-size="20px" fill="white">Dock Status!</text>
-
     dockStatusArcy.append("path")
 	.attr("d", dockStatusArc)
 	.style("fill", function(d) {
@@ -334,8 +332,6 @@ d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-ci
     .style("font-size", 20)
     .style("fill", "white")
 
-    //<text x="800" y="50" font-family="sans-serif" font-size="20px" fill="white">Dock Status!</text>
-
     genderArcy.append("path")
 	.attr("d", genderArc)
 	.style("fill", function(d) {
@@ -349,7 +345,7 @@ d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-ci
 	.style("fill", "white");
 
 
-//---------------------------------------- Legend for Dock Status Pie Chart ---------------------------------------
+//---------------------------------------- Legend for Gender Pie Chart ---------------------------------------
 
 var genderPieLegend = d3.select("#vimage")
 .append("g")
@@ -374,6 +370,127 @@ var legendElements = genderPieLegend.selectAll("#vimage")
         .style("fill", function (d, i) {
 	    //console.log(i)
 	    return genderColor(i)
+        })
+
+    legendElements.append('text')
+        .attr("x", 20)
+        .attr("y", 10)
+    //.attr("dy", ".35em")
+        .text(function (d, i) {
+            return d.name
+        })
+        .attr("class", "textselected")
+        .style("text-anchor", "start")
+        .style("font-size", 15);
+});
+
+
+//---------------------------------------- Customer/Subscriber pie  ---------------------------------------
+
+
+d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-citibike-tripdata.csv").then(function(data){
+    var i = 0;
+    var numCust = 0;
+    var numSub = 0;
+    console.log(stationId)
+
+    while(i < data.length){
+        //console.log(stationId);
+        if(data[i]["start station id"] == stationId.toString() || data[i]["end station id"] == stationId.toString()){
+            if(data[i]["usertype"] == "Customer"){
+                numCust++;
+            }
+            else{
+                numSub++;
+            }
+        }
+        i++;
+    }
+
+    console.log(numCust)
+    console.log(numSub);
+
+    var userTypeData = [{"name": "customer", "number": numCust}, {"name": "subscriber", "number": numSub}];
+
+    var userTypeWidth = 380;
+    var userTypeHeight = 380;
+    var userTypeRadius = 140
+    var userTypeDisplacementX = 850
+    var userTypeDisplacementY = 900
+
+    var userTypeColor = d3.scaleOrdinal()
+	.domain(userTypeData)
+	.range(["#ff9966","#9966ff"]);
+
+    var userTypePie = d3.pie()
+	.value(function(d) {
+	    return d.number; })(userTypeData);
+
+    var userTypeArc = d3.arc()
+	.outerRadius(userTypeRadius - 10)
+	.innerRadius(0);
+
+    var userTypeLabelArc = d3.arc()
+	.outerRadius(userTypeRadius)
+	.innerRadius(userTypeRadius - 100);
+
+    var userTypeSvgPie = d3.select("#vimage")
+	.append("g")
+	.attr("transform", "translate(" + userTypeDisplacementX + "," + userTypeDisplacementY +")");
+
+    var userTypeArcy = userTypeSvgPie.selectAll("arc")
+	.data(userTypePie)
+	.enter().append("g")
+	.attr("class", "arc");
+
+    var text = d3.select("#vimage")
+    .append("text")
+    .attr("x", userTypeDisplacementX - 120)
+    .attr("y", userTypeDisplacementY - 150)
+    .text("Customers vs. Subscribers at this Station")
+    .style("font-size", 20)
+    .style("fill", "white")
+
+    //<text x="800" y="50" font-family="sans-serif" font-size="20px" fill="white">Dock Status!</text>
+
+    userTypeArcy.append("path")
+	.attr("d", userTypeArc)
+	.style("fill", function(d) {
+	    //console.log(d);
+	    return userTypeColor(d.data.name);
+	});
+
+    userTypeArcy.append("text")
+	.attr("transform", function(d) { return "translate(" + userTypeLabelArc.centroid(d) + ")"; })
+	.text(function(d) { return d.data.number;})
+	.style("fill", "black");
+
+
+//---------------------------------------- Legend for user Type Pie Chart ---------------------------------------
+
+var userTypePieLegend = d3.select("#vimage")
+.append("g")
+.attr("transform", "translate(" + userTypeDisplacementX + "," + userTypeDisplacementY +")");
+
+
+var legendElements = userTypePieLegend.selectAll("#vimage")
+    .data(userTypeData)
+    .enter().append('g')
+    .attr("class", "userTypeLegend")
+    .attr("transform", function (d, i) {
+        {
+            return "translate(" + 200 +"," + (i * 20 - 60) + ")"
+        }
+    });
+
+    legendElements.append('rect')
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 10)
+        .attr("height", 10)
+        .style("fill", function (d, i) {
+	    //console.log(i)
+	    return userTypeColor(i)
         })
 
     legendElements.append('text')
