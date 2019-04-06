@@ -12,7 +12,7 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
 	    var docks = data.stationBeanList[x].totalDocks;
 	    var availableDocks = data.stationBeanList[x].availableDocks;
 	    var bikes = data.stationBeanList[x].availableBikes;
-	    var stationData = [{"name": "open docks", "number": availableDocks}, {"name": "occupied docks", "number": docks - availableDocks - bikes}, {"name":"available bikes", "number":bikes}];
+	    var stationData = [{"name": "Open Docks", "number": availableDocks}, {"name": "Occupied Docks", "number": docks - availableDocks - bikes}, {"name":"Available Bikes", "number":bikes}];
 	    //console.log(stationData);
 	}
     }
@@ -68,14 +68,14 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
     dockStatusArcy.append("text")
 	.attr("transform", function(d) { return "translate(" + dockStatusLabelArc.centroid(d) + ")"; })
 	.text(function(d) { return d.data.number;})
-	.style("fill", "#000");
+    .style("fill", "#000");
 
 
 //---------------------------------------- Legend for Dock Status Pie Chart ---------------------------------------
 
-var dockStatusPieLegend = d3.select("#vimage")
-.append("g")
-.attr("transform", "translate(" + dockStatusDisplacementX + "," + dockStatusDisplacementY +")");
+    var dockStatusPieLegend = d3.select("#vimage")
+    .append("g")
+    .attr("transform", "translate(" + dockStatusDisplacementX + "," + dockStatusDisplacementY +")");
 
     var legendElements = dockStatusPieLegend.selectAll("#vimage")
     .data(stationData)
@@ -264,7 +264,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
 //---------------------------------------- Gender pie  ---------------------------------------
 
 
-var bikecsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-citibike-tripdata.csv").then(function(data){
+d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-citibike-tripdata.csv").then(function(data){
     var i = 0;
     var numMale = 0;
     var numFem = 0;
@@ -347,7 +347,7 @@ var bikecsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/
 	.attr("transform", function(d) { return "translate(" + genderLabelArc.centroid(d) + ")"; })
 	.text(function(d) { return d.data.number;})
 	.style("fill", "white");
-});
+
 
 //---------------------------------------- Legend for Dock Status Pie Chart ---------------------------------------
 
@@ -356,7 +356,7 @@ var genderPieLegend = d3.select("#vimage")
 .attr("transform", "translate(" + genderDisplacementX + "," + genderDisplacementY +")");
 
 
-    var legendElements = genderPieLegend.selectAll("#vimage")
+var legendElements = genderPieLegend.selectAll("#vimage")
     .data(genderData)
     .enter().append('g')
     .attr("class", "genderLegend")
@@ -386,3 +386,4 @@ var genderPieLegend = d3.select("#vimage")
         .attr("class", "textselected")
         .style("text-anchor", "start")
         .style("font-size", 15);
+});
