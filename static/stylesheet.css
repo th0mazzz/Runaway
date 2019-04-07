@@ -50,6 +50,13 @@ display: block;
 		fill: red;
 }
 
+.bar2 {
+	fill: blue;
+}
+.bar3 {
+	fill: green;
+}
+
 div.tooltip {
     position: absolute;
     text-align: center;

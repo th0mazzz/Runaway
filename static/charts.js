@@ -372,8 +372,108 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
   g.selectAll(".bar")
     .data(tripDurationData)
     .enter().append("rect")
-    .attr("class","bar")
+    .attr("class","bar2")
     .attr("x", function(d){return x(d.ageGroup); })
+    .attr("y", function(d){return y(d.number); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d){return height - y(d.number); })
+    .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div	.html(d.number)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+    .on("mouseout", function(d) {
+          div.transition()
+              .duration(500)
+              .style("opacity", 0);
+        });
+//-------------------------------trips per day for march-------------------------------------
+  var i = 0;
+  //tally for total trips every 5 days * except 25-31 cus I cant do much about that
+  var m5 = 0;
+  var m10 = 0;
+  var m15 = 0;
+  var m20 = 0;
+  var m25 = 0;
+  var m31 = 0;
+  while(i < data.length){
+    if(data[i]["start station id"] == stationId.toString() || data[i]["end station id"] == stationId.toString()){
+      console.log(parseInt(data[i]["starttime"].substr(2,2),10));
+      //check the days and count the number of trips taken place each day
+      if (parseInt(data[i]["starttime"].substr(2,2),10)<= 5){
+        m5+=1;
+      }
+      else if(parseInt(data[i]["starttime"].substr(2,2),10)<=10){
+        m10+=1;
+      }
+      else if(parseInt(data[i]["starttime"].substr(2,2),10)<=15){
+        m15+=1;
+      }
+      else if(parseInt(data[i]["starttime"].substr(2,2),10)<=20){
+        m20+=1;
+      }
+      else if(parseInt(data[i]["starttime"].substr(2,2),10)<=25){
+        m25+=1;
+      }
+      else if(parseInt(data[i]["starttime"].substr(2,2),10)<=31){
+        m31+=1;
+      }
+    }
+    i++;
+  }
+  var tripsOnDates = [{"Date": "1st-5th", "number": m5},
+                          {"Date": "6th-10th", "number": m10},
+                          {"Date": "11th-15th", "number": m15},
+                          {"Date": "16th-20th", "number": m20},
+                          {"Date": "21st-25th", "number": m25},
+                          {"Date": "26th-31st", "number": m31}];
+  console.log(tripsOnDates);
+  var svg = d3.select("#vimage"),
+      width = 400,
+      height = 300;
+
+  var x = d3.scaleBand().range([0,width]).padding(0.4).domain(tripsOnDates.map(function(d){return d.Date;}));
+
+  var y = d3.scaleLinear().range([height,0]).domain([0,d3.max(tripsOnDates,function(d){return d.number;})]);
+
+  var g = svg.append("g")
+             .attr("transform", "translate("+ 700 + "," + 1300 + ")");
+
+  g.append("g")
+   .attr("transform", "translate(0," + height + ")")
+   .call(d3.axisBottom(x))
+   .append("text")
+   .attr("y", height - 250)
+   .attr("x", width - 100)
+   .attr("text-anchor", "end")
+   .attr("stroke", "black")
+   .text("Date Intervals");
+
+  g.append("g")
+   .call(d3.axisLeft(y).tickFormat(function(d){
+     return d;
+   }).ticks(10))
+   .append("text")
+   .attr("transform", "rotate(-90)")
+   .attr("y", 6)
+   .attr("dy", "-5.1em")
+   .attr("text-anchor", "end")
+   .attr("stroke", "black")
+   .text("Number of Trips on Said Date");
+
+   var div = d3.select("body").append("div")
+       .attr("class", "tooltip")
+       .style("opacity", 0);
+
+
+  g.selectAll(".bar")
+    .data(tripsOnDates)
+    .enter().append("rect")
+    .attr("class","bar3")
+    .attr("x", function(d){return x(d.Date); })
     .attr("y", function(d){return y(d.number); })
     .attr("width", x.bandwidth())
     .attr("height", function(d){return height - y(d.number); })
