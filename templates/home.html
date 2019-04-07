@@ -10,9 +10,24 @@
 
   <h1 style="text-align:center">RunawayBikes</h1>
 
-  <div id="bigdiv" style="width:1500px;height:1080px;text-align:center">
+  <div id="dropdown" style="text-align:center">
+      <input id="searchbar" type="text" style="text-align:center;height:75px;width:800px;font-size:30pt;margin-bottom:10px" placeholder="Search your CitiBike station..." onkeyup="filter()" oninput="toggler()">
 
-    <svg xmlns="http://www.w3.org/2000/svg" id="vimage" station="{{stationid}}" height="1200" width="1200" style="border: 1px solid;">
+  </div>
+
+  <div style="text-align:left">
+      <div id="stations">
+          {% for dict in list %}
+          <a href="/{{dict["latitude"]}}/{{dict["longitude"]}}?id={{dict["id"]}}">{{dict["stAddress1"]}}</a>
+          {% endfor %}
+      </div>
+  </div>
+
+  <h2 style="text-align:center">{{stationName}}</h2>
+
+  <div id="bigdiv" style="width:1500px;height:1300px;text-align:center">
+
+    <svg xmlns="http://www.w3.org/2000/svg" id="vimage" station="{{stationid}}" height="1300" width="1300" style="border: 1px solid;">
       <image xlink:href={{link}} height="700" width="700"/>
       {% if hasCoordinates %}
       <circle cx="350" cy="350" r="5" fill="red"></circle>
@@ -22,19 +37,10 @@
 
   </div>
 
-  <div class="dropdown">
-    <button class="dropbtn">Dropdown</button>
-    <div class="dropdown-content">
-      {% for dict in list %}
-      <a href="/{{dict["latitude"]}}/{{dict["longitude"]}}?id={{dict["id"]}}">{{dict["stAddress1"]}}</a>
-      {% endfor %}
-    </div>
-
-  </div>
-
 </body>
 
 <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
 <script src="../static/charts.js"></script>
+<script src="../static/search.js"></script>
 
 </html>

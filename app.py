@@ -27,7 +27,9 @@ def landing():
 @app.route("/<lat>/<long>")
 def map(lat,long):
     stationId = request.args["id"] #returns id of station
-    return render_template('home.html', link = m.displayMapC(lat,long), list = listOfStations, stationid = stationId, hasCoordinates = True)
+    stationName = stationDictById[int(stationId)]["stationName"]
+    print(stationName)
+    return render_template('home.html', link = m.displayMapC(lat,long), list = listOfStations, stationid = stationId, stationName = stationName, hasCoordinates = True)
 
 
 if __name__=="__main__":
