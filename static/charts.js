@@ -171,16 +171,16 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
       }
       i++;
   }
-  console.log(num10);
-  console.log(num20);
-  console.log(num30);
-  console.log(num40);
-  console.log(num50);
-  console.log(num60);
-  console.log(num70);
-  console.log(num80);
-  console.log(num90);
-  console.log(noAgegiven);
+  //console.log(num10);
+  //console.log(num20);
+  //console.log(num30);
+  //console.log(num40);
+  //console.log(num50);
+  //console.log(num60);
+  //console.log(num70);
+  //console.log(num80);
+  //console.log(num90);
+  //console.log(noAgegiven);
 
   var ageData = [{"ageGroup": "0-10", "number": num10.length},
                  {"ageGroup": "11-20", "number": num20.length},
@@ -192,7 +192,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
                  {"ageGroup": "71-80", "number": num80.length},
                  {"ageGroup": "80+", "number": num90.length},
                  {"ageGroup": "N/A", "number": noAgegiven.length}];
-  console.log(ageData);
+  //console.log(ageData);
 
   var svg = d3.select("#vimage"),
       width = 400,
@@ -253,7 +253,143 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
               .duration(500)
               .style("opacity", 0);
         });
+//------------------------------average trip time per age group-----------------------
+  var avNum10 = 0;
+  var avNum20 = 0;
+  var avNum30 = 0;
+  var avNum40 = 0;
+  var avNum50 = 0;
+  var avNum60 = 0;
+  var avNum70 = 0;
+  var avNum80 = 0;
+  var avNum90 = 0;
+  var avNoAgeGiven = 0;
+  for (var i = 0;i<num10.length;i++){
+    avNum10+=parseInt(num10[i]["tripduration"],10);
+  }
+  avNum10 = avNum10/num10.length
 
+  for (var i = 0;i<num20.length;i++){
+    avNum20+=parseInt(num20[i]["tripduration"],10);
+  }
+  avNum20 = avNum20/num20.length
+
+  for (var i = 0;i<num30.length;i++){
+    avNum30+=parseInt(num30[i]["tripduration"],10);
+  }
+  avNum30 = avNum30/num30.length
+
+  for (var i = 0;i<num40.length;i++){
+    //console.log(num40[i]["tripduration"]);
+    avNum40+=parseInt(num40[i]["tripduration"],10);
+  }
+  //console.log("num40 total");
+  //console.log(avNum40);
+  //console.log(num40.length);
+  avNum40 = avNum40/num40.length
+  //console.log(avNum40);
+  for (var i = 0;i<num50.length;i++){
+    avNum50+=parseInt(num50[i]["tripduration"],10);
+  }
+  avNum50 = avNum50/num50.length
+
+  for (var i = 0;i<num60.length;i++){
+    avNum60+=parseInt(num60[i]["tripduration"],10);
+  }
+  avNum60 = avNum60/num60.length
+
+  for (var i = 0;i<num70.length;i++){
+    avNum70+=parseInt(num70[i]["tripduration"],10);
+  }
+  avNum70 = avNum70/num70.length
+
+  for (var i = 0;i<num80.length;i++){
+    avNum80+=parseInt(num80[i]["tripduration"],10);
+  }
+  avNum80 = avNum80/num80.length
+
+  for (var i = 0;i<num90.length;i++){
+    avNum90+=parseInt(num90[i]["tripduration"],10);
+  }
+  avNum90 = avNum90/num90.length
+
+  for (var i = 0;i<noAgegiven.length;i++){
+    avNoAgeGiven+=parseInt(noAgegiven[i]["tripduration"],10);
+  }
+  avNoAgeGiven = avNoAgeGiven/noAgegiven.length
+
+
+
+  var tripDurationData = [{"ageGroup": "0-10", "number": Math.floor(avNum10)},
+                          {"ageGroup": "11-20", "number": Math.floor(avNum20)},
+                          {"ageGroup": "21-30", "number": Math.floor(avNum30)},
+                          {"ageGroup": "31-40", "number": Math.floor(avNum40)},
+                          {"ageGroup": "41-50", "number": Math.floor(avNum50)},
+                          {"ageGroup": "51-60", "number": Math.floor(avNum60)},
+                          {"ageGroup": "61-70", "number": Math.floor(avNum70)},
+                          {"ageGroup": "71-80", "number": Math.floor(avNum80)},
+                          {"ageGroup": "80+", "number": Math.floor(avNum90)},
+                          {"ageGroup": "N/A", "number": Math.floor(avNoAgeGiven)}];
+  console.log(tripDurationData);
+  var svg = d3.select("#vimage"),
+      width = 400,
+      height = 300;
+
+  var x = d3.scaleBand().range([0,width]).padding(0.4).domain(tripDurationData.map(function(d){return d.ageGroup;}));
+
+  var y = d3.scaleLinear().range([height,0]).domain([0,d3.max(tripDurationData,function(d){return d.number;})]);
+
+  var g = svg.append("g")
+             .attr("transform", "translate("+ 100 + "," + 1300 + ")");
+
+  g.append("g")
+   .attr("transform", "translate(0," + height + ")")
+   .call(d3.axisBottom(x))
+   .append("text")
+   .attr("y", height - 250)
+   .attr("x", width - 100)
+   .attr("text-anchor", "end")
+   .attr("stroke", "black")
+   .text("Age Group");
+
+  g.append("g")
+   .call(d3.axisLeft(y).tickFormat(function(d){
+     return d;
+   }).ticks(10))
+   .append("text")
+   .attr("transform", "rotate(-90)")
+   .attr("y", 6)
+   .attr("dy", "-5.1em")
+   .attr("text-anchor", "end")
+   .attr("stroke", "black")
+   .text("Average Duration of Trip in Seconds");
+
+   var div = d3.select("body").append("div")
+       .attr("class", "tooltip")
+       .style("opacity", 0);
+
+
+  g.selectAll(".bar")
+    .data(tripDurationData)
+    .enter().append("rect")
+    .attr("class","bar")
+    .attr("x", function(d){return x(d.ageGroup); })
+    .attr("y", function(d){return y(d.number); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d){return height - y(d.number); })
+    .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div	.html(d.number)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+    .on("mouseout", function(d) {
+          div.transition()
+              .duration(500)
+              .style("opacity", 0);
+        });
 
 
 
