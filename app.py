@@ -19,16 +19,16 @@ with open('data/stations.json', 'r') as file:
         stationDictById[entry["id"]] = entry
 
 #root directory
-
 @app.route("/")
 def landing():
     return render_template('landing.html', list = listOfStations)
 
+#after search is done
 @app.route("/<lat>/<long>")
 def map(lat,long):
     stationId = request.args["id"] #returns id of station
     stationName = stationDictById[int(stationId)]["stationName"]
-    print(stationName)
+    #print(stationName)
     return render_template('home.html', link = m.displayMapC(lat,long), list = listOfStations, stationid = stationId, stationName = stationName, hasCoordinates = True)
 
 
