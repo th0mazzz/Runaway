@@ -108,9 +108,12 @@ thomasZ -- 2019-04-06 19:24
 --------------------------------------------------------------
 - Made a cooler search function and put up a landing page
 ==============================================================
-firstL -- 2019-04-00 00:00
+peterC -- 2019-04-07 17:55
 --------------------------------------------------------------
-- What you do
+- Did the remaining two bar graphs
+- Did the API key reading thingie (though key itself is still
+stored in .txt in Git)
+- Made axes font bigger
 ==============================================================
 firstL -- 2019-04-00 00:00
 --------------------------------------------------------------

@@ -213,6 +213,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
    .attr("x", width - 100)
    .attr("text-anchor", "end")
    .attr("stroke", "black")
+   .attr("font-size", 15)
    .text("Age Group");
 
   g.append("g")
@@ -225,6 +226,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
    .attr("dy", "-5.1em")
    .attr("text-anchor", "end")
    .attr("stroke", "black")
+   .attr("font-size", 15)
    .text("People");
 
    var div = d3.select("body").append("div")
@@ -350,6 +352,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
    .attr("x", width - 100)
    .attr("text-anchor", "end")
    .attr("stroke", "black")
+   .attr("font-size", 15)
    .text("Age Group");
 
   g.append("g")
@@ -362,6 +365,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
    .attr("dy", "-5.1em")
    .attr("text-anchor", "end")
    .attr("stroke", "black")
+   .attr("font-size", 15)
    .text("Average Duration of Trip in Seconds");
 
    var div = d3.select("body").append("div")
@@ -450,6 +454,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
    .attr("x", width - 100)
    .attr("text-anchor", "end")
    .attr("stroke", "black")
+   .attr("font-size", 15)
    .text("Date Intervals");
 
   g.append("g")
@@ -462,6 +467,7 @@ var ageCsv = d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/d
    .attr("dy", "-5.1em")
    .attr("text-anchor", "end")
    .attr("stroke", "black")
+   .attr("font-size", 15)
    .text("Number of Trips on Said Date");
 
    var div = d3.select("body").append("div")
