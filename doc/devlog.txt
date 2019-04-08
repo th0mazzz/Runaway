@@ -116,7 +116,8 @@ stored in .txt in Git)
 - Made axes font bigger
 - Updated readme
 ==============================================================
-firstL -- 2019-04-00 00:00
+rubinP -- 2019-04-05 13:38
 --------------------------------------------------------------
-- What you do
-==============================================================
+- Update the stylesheet.css 
+- Fix charts.js to match the stylesheet colorscheme
+

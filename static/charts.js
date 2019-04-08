@@ -54,7 +54,7 @@ d3.json("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/stations
     .attr("y", dockStatusDisplacementY - 150)
     .text("Dock Status")
     .style("font-size", 20)
-    .style("fill", "white")
+    .style("fill", "black")
 
     dockStatusArcy.append("path")
 	.attr("d", dockStatusArc)
@@ -572,7 +572,7 @@ d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-ci
     .attr("y", genderDisplacementY - 150)
     .text("Gender Breakdown By Trip")
     .style("font-size", 20)
-    .style("fill", "white")
+    .style("fill", "black")
 
     genderArcy.append("path")
 	.attr("d", genderArc)
@@ -584,7 +584,7 @@ d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-ci
     genderArcy.append("text")
 	.attr("transform", function(d) { return "translate(" + genderLabelArc.centroid(d) + ")"; })
 	.text(function(d) { return d.data.number;})
-	.style("fill", "white");
+	.style("fill", "black");
 
 
 //---------------------------------------- Legend for Gender Pie Chart ---------------------------------------
@@ -691,7 +691,7 @@ d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-ci
     .attr("y", userTypeDisplacementY - 150)
     .text("Customers vs. Subscribers at this Station")
     .style("font-size", 20)
-    .style("fill", "white")
+    .style("fill", "black")
 
     //<text x="800" y="50" font-family="sans-serif" font-size="20px" fill="white">Dock Status!</text>
 
