@@ -59,11 +59,9 @@ pip install wheel
 ```
 pip install flask
 ```
+Now locate the root directory of the application and find the file called "apiKey.txt". Paste your API key here.
 
--------------- YOU NEED TO MAKE THE API KEY READING THINGIE -----------------
-
-
-Awesome. To run the app, change into the directory of the application (where the file app.py is).
+To run the app, change into the directory of the application (where the file app.py is).
 Now, run the file using:
 ```
 python app.py

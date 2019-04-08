@@ -114,6 +114,7 @@ peterC -- 2019-04-07 17:55
 - Did the API key reading thingie (though key itself is still
 stored in .txt in Git)
 - Made axes font bigger
+- Updated readme
 ==============================================================
 firstL -- 2019-04-00 00:00
 --------------------------------------------------------------
