@@ -149,7 +149,7 @@ d3.csv("https://raw.githubusercontent.com/th0mazzz/Runaway/master/data/201503-ci
 
     var genderColor = d3.scaleOrdinal()
 	.domain(genderData)
-	.range(["#52527a","#003399","#cc00cc"]);
+	.range(["#52527a","#006bb3","#cc00cc"]);
 
     var genderPie = d3.pie()
 	.value(function(d) {
@@ -255,7 +255,7 @@ var legendElements = genderPieLegend.selectAll("#vimage")
     console.log(numCust)
     console.log(numSub);
 
-    var userTypeData = [{"name": "customer", "number": numCust}, {"name": "subscriber", "number": numSub}];
+    var userTypeData = [{"name": "Customer", "number": numCust}, {"name": "Subscriber", "number": numSub}];
 
     var userTypeWidth = 380;
     var userTypeHeight = 380;
