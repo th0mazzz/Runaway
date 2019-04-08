@@ -120,4 +120,7 @@ rubinP -- 2019-04-05 13:38
 --------------------------------------------------------------
 - Update the stylesheet.css 
 - Fix charts.js to match the stylesheet colorscheme
-
+==============================================================
+thomasZ -- 2019-04-05 14:03
+--------------------------------------------------------------
+- Made the loading of the pies more efficient
